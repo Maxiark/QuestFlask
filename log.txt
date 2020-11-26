@@ -1,0 +1,4 @@
+Start Questok, set Quest:1 - 0
+		 Effects now: P.Reset()
+ok, set Quest:1 - 0
+		 Effects now: P.Reset()

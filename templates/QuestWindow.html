@@ -1,0 +1,79 @@
+<html>
+   <head>
+      <title>Quest by Max</title>
+      <style>
+          textarea {
+            padding: 5px;
+            vertical-align: top;
+          }
+          textarea:focus {
+            outline-style: solid;
+            outline-width: 2px;
+          }
+          progress {
+          background-color: #f3f3f3;
+          border: 1;
+          height: 18px;
+          border-radius: 9px;
+          }
+      </style>
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+   </head>
+   <body>
+      <table>
+          {% for item in data %}
+          <tr>
+              <td>
+                  Здоровье: {{item[2]}}
+                  <br>
+                  Инвентарь: 
+              </td>
+              <td>
+                  <progress id="healthbar" value={{item[2]}} max="100"></progress>
+                  <br>
+                  <div> [{% if item[3] %} {{ item[3] }} {% else %} ... {% endif %}] <div>
+              </td>
+          </tr>
+            <form action="/enter_ans" method="post" id="ans_enter">
+              <tr>
+                <td>
+                  <br>
+                </td>
+                <td>
+                    <br>
+                    <div style="width:500px; max-width:500px; display:block; white-space: pre-wrap;"><i>{{item[4]}}</i> <br><br><b>{{item[0]}}</b> <br>
+                    <br> {{item[1]}}</div> <!-- maybe don't show this when no output -->
+                    <hr>
+                </td>
+              </tr>
+              <tr>
+                  <td>
+                      Action:
+                  </td>
+                  <td>
+                      <label for="name">Действие:</label>
+                      <input autofocus type="text" name="input_ans" id="name">
+                      <input type="submit" value="Go!">
+                      <br>
+                  </td>
+              </tr>
+            </form>
+            {% endfor %}
+          <tr>
+            <form action="/restart" method="post">
+              <button type="submit">Restart</button>
+            </form>
+          </tr>
+          <tr>
+           <form enctype=multipart/form-data action="/update_path" method="post" id="filein">
+             <div>
+               <label for="file">Загрузить новые сценарии: </label>
+               <input type="file" id="file" name="file" multiple>
+               <input type="submit" value="Upload">
+             </div>
+           </form>
+          </tr>
+      </table>
+
+   </body>
+</html>
