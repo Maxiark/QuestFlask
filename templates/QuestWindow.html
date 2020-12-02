@@ -24,9 +24,9 @@
           {% for item in data %}
           <tr>
               <td>
-                  Здоровье: {{item[2]}}
+                  <b> Здоровье: {{item[2]}} </b>
                   <br>
-                  Инвентарь: 
+                  <b> Инвентарь: </b>
               </td>
               <td>
                   <progress id="healthbar" value={{item[2]}} max="100"></progress>
@@ -58,21 +58,25 @@
                   </td>
               </tr>
             </form>
-            {% endfor %}
           <tr>
             <form action="/restart" method="post">
               <button type="submit">Restart</button>
             </form>
           </tr>
           <tr>
+           <br>
+           <h4>Message status:</b> <i>{{item[5]}}</i></h4>
            <form enctype=multipart/form-data action="/update_path" method="post" id="filein">
              <div>
-               <label for="file">Загрузить новые сценарии: </label>
+               <label for="file">Обновить файлы квеста: </label>
                <input type="file" id="file" name="file" multiple>
                <input type="submit" value="Upload">
+               <br>
+               <br>
              </div>
            </form>
           </tr>
+          {% endfor %}
       </table>
 
    </body>

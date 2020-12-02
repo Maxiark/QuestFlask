@@ -11,11 +11,11 @@ from flask import jsonify, render_template
 logger = logging.getLogger(__name__)
 logger.setLevel('INFO')
             
-def render(text, anslist, health, invent, welcome):
+def render(text, anslist, health, invent, welcome, status):
     """"""
     return render_template(
         'QuestWindow.html',
-        data=zip([text], [anslist], [health], [invent], [welcome])
+        data=zip([text], [anslist], [health], [invent], [welcome], [status])
 #        текст квеста, список ответов, здоровье, инвентарь
     )
 
